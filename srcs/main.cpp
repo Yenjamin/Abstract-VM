@@ -4,6 +4,9 @@ int	main(int argc, char **argv)
 {
 	try {
 		if (argc == 1) {
+			std::string	line;
+			getline(std::cin, line);
+			std::cout << line << std::endl;
 			//read from standard
 		} else if (argc == 2) {
 			std::string	temp = argv[1];
