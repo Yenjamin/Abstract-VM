@@ -2,5 +2,6 @@
 # define Header_HPP
 
 # include <iostream>
+# include <vector>
 
 #endif
