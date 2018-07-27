@@ -1,15 +1,16 @@
 #include "../includes/Header.hpp"
+#include "../includes/reader.class.hpp"
 
 int	main(int argc, char **argv)
 {
+	std::string	temp;
+	reader	init;
 	try {
 		if (argc == 1) {
-			std::string	line;
-			getline(std::cin, line);
-			std::cout << line << std::endl;
+			init.inputread();
 			//read from standard
 		} else if (argc == 2) {
-			std::string	temp = argv[1];
+			temp = argv[1];
 			if (temp.find(".avm") == std::string::npos)
 				std::cout << "Error: Invalid use of the program" << std::endl;
 			else
