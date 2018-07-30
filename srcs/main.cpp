@@ -14,7 +14,10 @@ int	main(int argc, char **argv)
 			if (temp.find(".avm") == std::string::npos)
 				std::cout << "Error: Invalid use of the program" << std::endl;
 			else
+			{
 				std::cout << argv[1] <<std::endl;
+				init.fileread(argv[1]);
+			}
 			//read from file
 		} else {
 			std::cout << "Error: Invalid use of the program" << std::endl;
