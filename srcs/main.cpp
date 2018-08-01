@@ -12,7 +12,7 @@ int	main(int argc, char **argv)
 		} else if (argc == 2) {
 			temp = argv[1];
 			if (temp.find(".avm") == std::string::npos)
-				std::cout << "Error: Invalid use of the program" << std::endl;
+				throw errors::inputerror();
 			else
 			{
 				std::cout << argv[1] <<std::endl;
