@@ -1,5 +1,16 @@
 #include "../includes/Header.hpp"
 #include "../includes/reader.class.hpp"
+#include "../includes/errors.class.hpp"
+
+reader::reader(void)
+{
+	return ;
+}
+
+reader::~reader(void)
+{
+	return ;
+}
 
 const std::vector<std::string>		reader::inputread(void)
 {
@@ -44,10 +55,7 @@ const std::vector<std::string>	reader::fileread(const char *file)
 	if (content.is_open())
 	{
 		if (fileCheck(std::string(file)) == 0)
-		{
-			std::cout << "directory" << std::endl;
-			//need exception
-		}
+			throw errors::directoryError();
 		else
 		{
 			while (!content.eof())
@@ -69,9 +77,6 @@ const std::vector<std::string>	reader::fileread(const char *file)
 		}
 	}
 	else
-	{
-		std::cout << "No!" << std::endl;
-		//need exception
-	}
+		throw errors::fileOpenError();
 	return (commands);
 }

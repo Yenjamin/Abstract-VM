@@ -3,6 +3,8 @@
 
 class reader {
 	public:
+		reader(void);
+		~reader(void);
 		const std::vector<std::string>	inputread(void);
 		bool				fileCheck(std::string file);
 		const std::vector<std::string>	fileread(const char *file);
