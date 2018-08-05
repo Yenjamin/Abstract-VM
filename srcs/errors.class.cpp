@@ -1,4 +1,4 @@
-#include "../includes/Header.hpp"
+#include "../includes/header.hpp"
 #include "../includes/errors.class.hpp"
 
 const char	*errors::inputError::what() const throw()

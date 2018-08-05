@@ -1,7 +1,7 @@
 #ifndef ERRORS_CLASS_HPP
 # define ERRORS_CLASS_HPP
 
-#include "Header.hpp"
+#include "header.hpp"
 
 class errors {
 	public:

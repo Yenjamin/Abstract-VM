@@ -1,5 +1,5 @@
-#ifndef HEADER_HPP
-# define Header_HPP
+#ifndef header_HPP
+# define header_HPP
 
 # include <iostream>
 # include <vector>
