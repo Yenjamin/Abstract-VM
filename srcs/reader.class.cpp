@@ -22,15 +22,6 @@ const std::vector<std::string>		reader::inputread(void)
 		if (line.size() >= 1)
 			commands.push_back(line);
 	}
-	std::vector<std::string>::const_iterator     top;
-	std::vector<std::string>::const_iterator       next;
-
-	top = commands.begin();
-	next = commands.end();
-	while (top != next) {
-		std::cout << *top << std::endl;
-		top++;
-	}
 	return (commands);
 }
 
@@ -65,15 +56,6 @@ const std::vector<std::string>	reader::fileread(const char *file)
 					commands.push_back(line);
 			}
 			content.close();
-			std::vector<std::string>::const_iterator     top;
-			std::vector<std::string>::const_iterator       next;
-			
-			top = commands.begin();
-			next = commands.end();
-			while (top != next) {
-				std::cout << *top << std::endl;
-				top++;
-			}
 		}
 	}
 	else
