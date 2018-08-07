@@ -20,3 +20,12 @@ const char      *errors::fileOpenError::what() const throw()
 {
 	        return ("cannot open the file");
 }
+
+const char	*errors::overflowError::what() const throw()
+{
+	return ("overflow");
+}
+
+const char	*errors::underflowError::what() const throw()
+{
+	return ("underflow");

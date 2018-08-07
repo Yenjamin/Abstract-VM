@@ -21,6 +21,14 @@ class errors {
 			public:
 				const char *what() const throw();
 		};
+		class overflowError : public std::exception {
+			public:
+				const char *what() const throw();
+		};
+		class underflowError : public std::exception {
+			public:
+				const char *what() const throw();
+		};
 };
 
 #endif
