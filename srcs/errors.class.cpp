@@ -29,3 +29,4 @@ const char	*errors::overflowError::what() const throw()
 const char	*errors::underflowError::what() const throw()
 {
 	return ("underflow");
+}

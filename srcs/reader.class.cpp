@@ -12,13 +12,21 @@ reader::~reader(void)
 	return ;
 }
 
+const std::string			reader::removecomment(std::string line)
+{
+	std::string			temp = "";
+
+	temp = line.substr(0, line.find(';'));
+	return (temp);
+}
+
 const std::vector<std::string>		reader::inputread(void)
 {
 	std::vector<std::string>	commands;
 	std::string			line = "";
-	while (line != ";;")
+	while (getline(std::cin, line) && line != ";;")
 	{
-		getline(std::cin, line);
+		line = removecomment(line);
 		if (line.size() >= 1)
 			commands.push_back(line);
 	}
@@ -52,6 +60,7 @@ const std::vector<std::string>	reader::fileread(const char *file)
 			while (!content.eof())
 			{
 				getline(content, line);
+				line = removecomment(line);
 				if (line.size() >= 1)
 					commands.push_back(line);
 			}
@@ -62,3 +71,5 @@ const std::vector<std::string>	reader::fileread(const char *file)
 		throw errors::fileOpenError();
 	return (commands);
 }
+
+
