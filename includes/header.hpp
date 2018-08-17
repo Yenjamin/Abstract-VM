@@ -6,6 +6,5 @@
 # include <fstream>
 # include <sys/stat.h>
 # include <regex>
-# include <algorithm>
 
 #endif
