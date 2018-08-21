@@ -6,8 +6,7 @@ enum	eOperandType {
 	Int16,
 	Int32,
 	Float,
-	Double,
-	Error
+	Double
 };
 
 class	IOperand {

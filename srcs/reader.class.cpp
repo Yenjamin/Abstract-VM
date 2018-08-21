@@ -40,6 +40,35 @@ const std::string			reader::trimmer(std::string line)
 	return (tmp);
 }
 
+const std::string			commandcheck(std::string line)
+{
+	std::regex			withOperand("(push|assert) (int8|int16|int32|float|double)\\([-+]?[0-9]\\d*(\\.\\d+)?\\)\\B");
+	std::regex	                adfunc("(push|assert)\\.*");
+	std::regex			funcName("(add|sub|mod|dump|div|mul|pop|print).*");
+	std::regex			func("(add|sub|mod|dump|div|mul|pop|print)\\b");
+
+	if (std::regex_match(line, funcName) == true)
+	{
+		if (std::regex_match(line, func) == true)
+		{
+			return (line);
+		}
+		else
+			throw errors::syntaxError();
+	}
+	else if (std::regex_match(line, adfunc) == true)
+	{
+		if (std::regex_match(line, withOperand) == true)
+		{
+			return (line);
+		}
+		else
+			throw errors::syntaxError();
+	}
+	else
+		throw errors::unknownCommandError();
+}
+
 const std::vector<std::string>		reader::inputread(void)
 {
 	std::vector<std::string>	commands;

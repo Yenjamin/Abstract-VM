@@ -29,6 +29,15 @@ class errors {
 			public:
 				const char *what() const throw();
 		};
+		class unknownCommandError : public std::exception {
+			public:
+				const char *what() const throw();
+		};
+		class syntaxError : public std::exception {
+			public:
+				const char *what() const throw();
+		};
+
 };
 
 #endif

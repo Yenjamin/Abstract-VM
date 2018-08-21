@@ -30,3 +30,13 @@ const char	*errors::underflowError::what() const throw()
 {
 	return ("underflow");
 }
+
+const char	*errors::unknownCommandError::what() const throw()
+{
+	return ("Unknown Command");
+}
+
+const char	*errors::syntaxError::what() const throw()
+{
+	return ("Syntax Error");
+}
