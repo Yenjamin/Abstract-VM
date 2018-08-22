@@ -6,7 +6,8 @@ public:
     run(const std::vector<std::string> commands);
     run(const run &rhs);
     ~run(void);
-    void    runvm(void);
+    void	runinstructions(std::string line);
+    void	runvm(void);
 
 private:
     const std::vector<std::string>  _commands;

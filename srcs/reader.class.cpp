@@ -69,6 +69,12 @@ const std::string			commandcheck(std::string line)
 		throw errors::unknownCommandError();
 }
 
+/*void					sizecheck(std::string line)
+{
+	//pass in line start from operand to the bracket
+	//check for underflow/overflow
+}*/
+
 const std::vector<std::string>		reader::inputread(void)
 {
 	std::vector<std::string>	commands;
@@ -76,6 +82,7 @@ const std::vector<std::string>		reader::inputread(void)
 	while (getline(std::cin, line) && line != ";;")
 	{
 		line = trimmer(line);
+		commandcheck(line);
 		if (line.size() >= 1)
 			commands.push_back(line);
 	}
@@ -110,6 +117,7 @@ const std::vector<std::string>	reader::fileread(const char *file)
 			{
 				getline(content, line);
 				line = trimmer(line);
+				commandcheck(line);
 				if (line.size() >= 1)
 					commands.push_back(line);
 			}

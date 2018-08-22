@@ -1,5 +1,5 @@
 #include "../includes/header.hpp"
-#include "../includes/operand.hpp"
+#include "../includes/operand.class.hpp"
 
 template<typename T>
 operand<T>::operand(void)
@@ -13,6 +13,12 @@ operand<T>::operand(std::std::string val, eOperandType type) : _type(type)
 	long double tmp = std::stold(val);
 	T new_val = static_cast<T>(tmp);
 	_val = std::to_string(static_cast<T>(new_val));
+}
+
+template<typename T>
+operand<T>::operand(operand const & src)
+{
+	*this = src;
 }
 
 template<typename T>
@@ -68,4 +74,10 @@ IOperand const * operand<T>::operator+(IOperand const & rhs) const
 	int			prec1 = this->getPrecision();
 	int			prec2 = rhs.getPrecision();
 	factory			f;
+	IOperand const *	op = NULL;
+
+	if (prec1 < prec2)
+	{
+		checksize()
+	}
 }
