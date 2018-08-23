@@ -43,7 +43,7 @@ const std::string			reader::trimmer(std::string line)
 const std::string			commandcheck(std::string line)
 {
 	std::regex			withOperand("(push|assert) (int8|int16|int32|float|double)\\([-+]?[0-9]\\d*(\\.\\d+)?\\)\\B");
-	std::regex	                adfunc("(push|assert)\\.*");
+	std::regex	                adfunc("(push|assert).*");
 	std::regex			funcName("(add|sub|mod|dump|div|mul|pop|print).*");
 	std::regex			func("(add|sub|mod|dump|div|mul|pop|print)\\b");
 
@@ -82,9 +82,11 @@ const std::vector<std::string>		reader::inputread(void)
 	while (getline(std::cin, line) && line != ";;")
 	{
 		line = trimmer(line);
-		commandcheck(line);
 		if (line.size() >= 1)
+		{
+			commandcheck(line);
 			commands.push_back(line);
+		}
 	}
 	return (commands);
 }
@@ -117,9 +119,11 @@ const std::vector<std::string>	reader::fileread(const char *file)
 			{
 				getline(content, line);
 				line = trimmer(line);
-				commandcheck(line);
 				if (line.size() >= 1)
+				{
+					commandcheck(line);
 					commands.push_back(line);
+				}
 			}
 			content.close();
 		}
