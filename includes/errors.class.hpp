@@ -37,6 +37,14 @@ class errors {
 			public:
 				const char *what() const throw();
 		};
+		class initUnderflowError : public std::exception {
+			public:
+				const char *what() const throw();
+		};
+		class initOverflowError : public std::exception {
+			public:
+				const char *what() const throw();
+		};
 
 };
 

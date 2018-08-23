@@ -9,7 +9,6 @@ class operand : public IOperand
 	public:
 		operand(void);
 		operand(std::string val, eOperandType type);
-		perand(operand const & src);
 		virtual ~operand(void);
 		std::string	_val;
 		eOperandType	_type;
@@ -23,5 +22,7 @@ class operand : public IOperand
 		virtual IOperand const * operator/(IOperand const & rhs) const;
 		virtual IOperand const * operator%(IOperand const & rhs) const;
 };
+
+#include "../srcs/operand.class.cpp"
 
 #endif

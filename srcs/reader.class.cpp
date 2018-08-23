@@ -69,12 +69,6 @@ const std::string			commandcheck(std::string line)
 		throw errors::unknownCommandError();
 }
 
-/*void					sizecheck(std::string line)
-{
-	//pass in line start from operand to the bracket
-	//check for underflow/overflow
-}*/
-
 const std::vector<std::string>		reader::inputread(void)
 {
 	std::vector<std::string>	commands;

@@ -1,5 +1,5 @@
-#include "../includes/header.hpp"
 #include "../includes/operand.class.hpp"
+#include "../includes/factory.class.hpp"
 
 template<typename T>
 operand<T>::operand(void)
@@ -13,12 +13,6 @@ operand<T>::operand(std::std::string val, eOperandType type) : _type(type)
 	long double tmp = std::stold(val);
 	T new_val = static_cast<T>(tmp);
 	_val = std::to_string(static_cast<T>(new_val));
-}
-
-template<typename T>
-operand<T>::operand(operand const & src)
-{
-	*this = src;
 }
 
 template<typename T>
@@ -73,11 +67,84 @@ IOperand const * operand<T>::operator+(IOperand const & rhs) const
 	long double		result = val1 + val2;
 	int			prec1 = this->getPrecision();
 	int			prec2 = rhs.getPrecision();
-	factory			f;
+	factory			a;
 	IOperand const *	op = NULL;
 
 	if (prec1 < prec2)
-	{
-		checksize()
-	}
+		op = a.createOperand(rhs.getType, std::to_string(result));
+	else
+		op = a.createOperand(this->getType, std::to_string(result));
+	return (op);
+}
+
+template<typename T>
+IOperand const * operand<T>::operator-(IOperand const & rhs) const
+{
+	long double		val1 = std::stold(this->_val);
+	long double		val2 = std::stold(rhs.toString());
+	long double		result = val1 - val2;
+	int			prec1 = this->getPrecision();
+	int			prec2 = rhs.getPrecision();
+	factory			a;
+	IOperand const *	op = NULL;
+
+	if (prec1 < prec2)
+		op = a.createOperand(rhs.getType, std::to_string(result));
+	else
+		op = a.createOperand(this->getType, std::to_string(result));
+	return (op);
+}
+
+template<typename T>
+IOperand const * operand<T>::operator*(IOperand const & rhs) const
+{
+	long double		val1 = std::stold(this->_val);
+	long double		val2 = std::stold(rhs.toString());
+	long double		result = val1 * val2;
+	int			prec1 = this->getPrecision();
+	int			prec2 = rhs.getPrecision();
+	factory			a;
+	IOperand const *	op = NULL;
+
+	if (prec1 < prec2)
+		op = a.createOperand(rhs.getType, std::to_string(result));
+	else
+		op = a.createOperand(this->getType, std::to_string(result));
+	return (op);
+}
+
+template<typename T>
+IOperand const * operand<T>::operator/(IOperand const & rhs) const
+{
+	long double		val1 = std::stold(this->_val);
+	long double		val2 = std::stold(rhs.toString());
+	long double		result = val1 / val2;
+	int			prec1 = this->getPrecision();
+	int			prec2 = rhs.getPrecision();
+	factory			a;
+	IOperand const *	op = NULL;
+
+	if (prec1 < prec2)
+		op = a.createOperand(rhs.getType, std::to_string(result));
+	else
+		op = a.createOperand(this->getType, std::to_string(result));
+	return (op);
+}
+
+template<typename T>
+IOperand const * operand<T>::operator%(IOperand const & rhs) const
+{
+	long double		val1 = std::stold(this->_val);
+	long double		val2 = std::stold(rhs.toString());
+	long double		result = std::fmod(val1, val2);
+	int			prec1 = this->getPrecision();
+	int			prec2 = rhs.getPrecision();
+	factory			a;
+	IOperand const *	op = NULL;
+
+	if (prec1 < prec2)
+		op = a.createOperand(rhs.getType, std::to_string(result));
+	else
+		op = a.createOperand(this->getType, std::to_string(result));
+	return (op);
 }

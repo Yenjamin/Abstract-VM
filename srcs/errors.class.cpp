@@ -40,3 +40,13 @@ const char	*errors::syntaxError::what() const throw()
 {
 	return ("Syntax Error");
 }
+
+const char	*errors::initUnderflowError::what() const throw()
+{
+	return ("amount is too small for the operand to hold");
+}
+
+const char	*errors::initOverflowError::what() const throw()
+{
+	return ("amount is too big for the operand to hold");
+}

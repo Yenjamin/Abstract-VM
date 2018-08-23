@@ -1,4 +1,6 @@
 #include "../includes/factory.class.hpp"
+#include "../includes/errors.class.hpp"
+#include "../includes/operand.class.hpp"
 
 factory::factory(void)
 {
@@ -12,35 +14,68 @@ factory::~factory(void)
 
 IOperand const * factory::createInt8(std::string const & value) const
 {
-	int8_t	nbr = static_cast<int8_t>(stoi(value.c_str()));
+	long double	nbr = static_cast<long double>(stold(value));
 
-	return new Operand<int8_t>(Int8, static_cast<int8_t>(nbr));
+	if (nbr < INT8_MIN)
+		throw errors::initUnderflowError();
+	if (nbr > INT8_MAX)
+		throw errors::initOverflowError();
+	return new Operand<int8_t>(Int8, value);
 }
 
 IOperand const * factory::createInt16(std::string const & value) const
 {
-	int16_t	nbr = static_cast<int16_t>(stoi(value.c_str()));
+	long double	nbr = static_cast<long double>(stold(value));
 
-	return new Operand<int16_t>(Int16, static_cast<int16_t>(nbr));
+	if (nbr < INT16_MIN)
+		throw errors::initUnderflowError();
+	if (nbr > INT16_MAX)
+		throw errors::initOverflowError();
+	return new Operand<int16_t>(Int16, value);
 }
 
 IOperand const * factory::createInt32(std::string const & value) const
 {
-	int32_t	nbr = static_cast<int32_t>(stoi(value.c_str()));
+	long double	nbr = static_cast<long double>(stold(value));
 
-	return new Operand<int32_t>(Int32, static_cast<int32_t>(nbr));
+	if (nbr < INT32_MIN)
+		throw errors::initUnderflowError();
+	if (nbr > INT32_MAX)
+		throw errors::initOverflowError();
+	return new Operand<int32_t>(Int32, value);
 }
 
 IOperand const * factory::createFloat(std::string const & value) const
 {
-	double	nbr = static_cast<float>(stof(value.c_str()));
+	long double	nbr = static_cast<long double>(stold(value));
 
-	return new Operand<float>(Float, static_cast<float>(nbr));
+	if (std::fabsl(nbr) < FLT_MIN && std::fabsl(nbr) > 0)
+		throw errors::initUnderflowError();
+	if (nbr > FLT_MAX)
+		throw errors::initOverflowError();
+	return new Operand<float>(Float, value);
 }
 
 IOperand const * factory::createDouble(std::string const & value) const
 {
-	long double	nbr = static_cast<double>(sof(value.c_str()));
+	long double	nbr = static_cast<long double>(stold(value));
 
-	return new Operand<double>(Double, static_cast<double>(nbr));
+	if (std::fabsl(nbr) < DBL_MIN && std::fabsl(nbr) > 0)
+		throw errors::initUnderflowError();
+	if (nbr > DBL_MAX)
+		throw errors::initOverflowError();
+	return new Operand<double>(Double, value);
 }
+
+IOperand const * factory::createOperand(eOperandType type, std::string const & val) const
+{
+	functionpt	arr[] {
+		&factory::createInt8,
+		&factory::createInt16,
+		&factory::createInt32,
+		&factory::createFloat,
+		&factory::createDouble
+	};
+	functionpt	op = arr[type];
+	return ((this->*op)(val));
+};

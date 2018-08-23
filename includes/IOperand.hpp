@@ -2,9 +2,9 @@
 # define IOPERAND_HPP
 
 enum	eOperandType {
-	In8,
-	Int16,
-	Int32,
+	int8,
+	int16,
+	int32,
 	Float,
 	Double
 };

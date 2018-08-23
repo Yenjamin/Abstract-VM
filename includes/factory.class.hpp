@@ -1,6 +1,8 @@
 #ifndef FACTORY_CLASS_HPP
 # define FACTORY_CLASS_HPP
 
+# include "IOperand.hpp"
+
 class factory {
 	public:
 		factory(void);
