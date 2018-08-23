@@ -7,8 +7,7 @@ template<typename T>
 class operand : public IOperand
 {
 	public:
-		operand(void);
-		operand(std::string val, eOperandType type);
+		operand(eOperandType type, std::string val);
 		virtual ~operand(void);
 		std::string	_val;
 		eOperandType	_type;

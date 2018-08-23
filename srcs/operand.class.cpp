@@ -2,13 +2,7 @@
 #include "../includes/factory.class.hpp"
 
 template<typename T>
-operand<T>::operand(void)
-{
-	return ;
-}
-
-template<typename T>
-operand<T>::operand(std::std::string val, eOperandType type) : _type(type)
+operand<T>::operand(eOperandType type, std::string val) : _type(type)
 {
 	long double tmp = std::stold(val);
 	T new_val = static_cast<T>(tmp);
@@ -71,9 +65,9 @@ IOperand const * operand<T>::operator+(IOperand const & rhs) const
 	IOperand const *	op = NULL;
 
 	if (prec1 < prec2)
-		op = a.createOperand(rhs.getType, std::to_string(result));
+		op = a.createOperand(rhs.getType(), std::to_string(result));
 	else
-		op = a.createOperand(this->getType, std::to_string(result));
+		op = a.createOperand(this->getType(), std::to_string(result));
 	return (op);
 }
 
@@ -89,9 +83,9 @@ IOperand const * operand<T>::operator-(IOperand const & rhs) const
 	IOperand const *	op = NULL;
 
 	if (prec1 < prec2)
-		op = a.createOperand(rhs.getType, std::to_string(result));
+		op = a.createOperand(rhs.getType(), std::to_string(result));
 	else
-		op = a.createOperand(this->getType, std::to_string(result));
+		op = a.createOperand(this->getType(), std::to_string(result));
 	return (op);
 }
 
@@ -107,9 +101,9 @@ IOperand const * operand<T>::operator*(IOperand const & rhs) const
 	IOperand const *	op = NULL;
 
 	if (prec1 < prec2)
-		op = a.createOperand(rhs.getType, std::to_string(result));
+		op = a.createOperand(rhs.getType(), std::to_string(result));
 	else
-		op = a.createOperand(this->getType, std::to_string(result));
+		op = a.createOperand(this->getType(), std::to_string(result));
 	return (op);
 }
 
@@ -125,9 +119,9 @@ IOperand const * operand<T>::operator/(IOperand const & rhs) const
 	IOperand const *	op = NULL;
 
 	if (prec1 < prec2)
-		op = a.createOperand(rhs.getType, std::to_string(result));
+		op = a.createOperand(rhs.getType(), std::to_string(result));
 	else
-		op = a.createOperand(this->getType, std::to_string(result));
+		op = a.createOperand(this->getType(), std::to_string(result));
 	return (op);
 }
 
@@ -143,8 +137,8 @@ IOperand const * operand<T>::operator%(IOperand const & rhs) const
 	IOperand const *	op = NULL;
 
 	if (prec1 < prec2)
-		op = a.createOperand(rhs.getType, std::to_string(result));
+		op = a.createOperand(rhs.getType(), std::to_string(result));
 	else
-		op = a.createOperand(this->getType, std::to_string(result));
+		op = a.createOperand(this->getType(), std::to_string(result));
 	return (op);
 }

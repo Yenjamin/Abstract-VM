@@ -20,7 +20,7 @@ IOperand const * factory::createInt8(std::string const & value) const
 		throw errors::initUnderflowError();
 	if (nbr > INT8_MAX)
 		throw errors::initOverflowError();
-	return new Operand<int8_t>(Int8, value);
+	return new operand<int8_t>(int8, value);
 }
 
 IOperand const * factory::createInt16(std::string const & value) const
@@ -31,7 +31,7 @@ IOperand const * factory::createInt16(std::string const & value) const
 		throw errors::initUnderflowError();
 	if (nbr > INT16_MAX)
 		throw errors::initOverflowError();
-	return new Operand<int16_t>(Int16, value);
+	return new operand<int16_t>(int16, value);
 }
 
 IOperand const * factory::createInt32(std::string const & value) const
@@ -42,7 +42,7 @@ IOperand const * factory::createInt32(std::string const & value) const
 		throw errors::initUnderflowError();
 	if (nbr > INT32_MAX)
 		throw errors::initOverflowError();
-	return new Operand<int32_t>(Int32, value);
+	return new operand<int32_t>(int32, value);
 }
 
 IOperand const * factory::createFloat(std::string const & value) const
@@ -53,7 +53,7 @@ IOperand const * factory::createFloat(std::string const & value) const
 		throw errors::initUnderflowError();
 	if (nbr > FLT_MAX)
 		throw errors::initOverflowError();
-	return new Operand<float>(Float, value);
+	return new operand<float>(Float, value);
 }
 
 IOperand const * factory::createDouble(std::string const & value) const
@@ -64,12 +64,12 @@ IOperand const * factory::createDouble(std::string const & value) const
 		throw errors::initUnderflowError();
 	if (nbr > DBL_MAX)
 		throw errors::initOverflowError();
-	return new Operand<double>(Double, value);
+	return new operand<double>(Double, value);
 }
 
 IOperand const * factory::createOperand(eOperandType type, std::string const & val) const
 {
-	functionpt	arr[] {
+	functionpt	arr[] = {
 		&factory::createInt8,
 		&factory::createInt16,
 		&factory::createInt32,

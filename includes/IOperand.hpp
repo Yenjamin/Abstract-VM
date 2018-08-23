@@ -1,6 +1,8 @@
 #ifndef IOPERAND_HPP
 # define IOPERAND_HPP
 
+# include "header.hpp"
+
 enum	eOperandType {
 	int8,
 	int16,

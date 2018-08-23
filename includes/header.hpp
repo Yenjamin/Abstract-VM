@@ -6,5 +6,7 @@
 # include <fstream>
 # include <sys/stat.h>
 # include <regex>
+# include <cmath>
+# include <cfloat>
 
 #endif

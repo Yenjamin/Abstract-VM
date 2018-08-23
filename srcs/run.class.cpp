@@ -102,7 +102,7 @@ void    run::runvm(void)
     bottom = _commands.end();
     while (top != bottom) {
 	    std::cout << *top << std::endl;
-	    runinstructions(*top, std::vector<IOperand const *> & stack);
+	    runinstructions(*top, stack);
 	    top++;
     }
 }
