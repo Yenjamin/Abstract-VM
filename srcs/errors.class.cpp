@@ -50,3 +50,33 @@ const char	*errors::initOverflowError::what() const throw()
 {
 	return ("amount is too big for the operand to hold");
 }
+
+const char	*errors::emptyStackError::what() const throw()
+{
+	return ("the stack is empty");
+}
+
+const char	*errors::operationError::what() const throw()
+{
+	return ("need at least 2 values on stack to perform");
+}
+
+const char	*errors::zeroError::what() const throw()
+{
+	return ("can't mod/div by 0");
+}
+
+const char	*errors::typeError::what() const throw()
+{
+	return ("wrong type");
+}
+
+const char	*errors::assertError::what() const throw()
+{
+	return ("assert returns false");
+}
+
+const char	*errors::exitError::what() const throw()
+{
+	return ("no exit found");
+}

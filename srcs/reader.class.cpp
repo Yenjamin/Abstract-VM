@@ -44,8 +44,8 @@ const std::string			commandcheck(std::string line)
 {
 	std::regex			withOperand("(push|assert) (int8|int16|int32|float|double)\\([-+]?[0-9]\\d*(\\.\\d+)?\\)\\B");
 	std::regex	                adfunc("(push|assert).*");
-	std::regex			funcName("(add|sub|mod|dump|div|mul|pop|print).*");
-	std::regex			func("(add|sub|mod|dump|div|mul|pop|print)\\b");
+	std::regex			funcName("(add|sub|mod|dump|div|mul|pop|print|exit).*");
+	std::regex			func("(add|sub|mod|dump|div|mul|pop|print|exit)\\b");
 
 	if (std::regex_match(line, funcName) == true)
 	{
@@ -73,15 +73,20 @@ const std::vector<std::string>		reader::inputread(void)
 {
 	std::vector<std::string>	commands;
 	std::string			line = "";
+	bool				exit = false;
 	while (getline(std::cin, line) && line != ";;")
 	{
 		line = trimmer(line);
-		if (line.size() >= 1)
+		if (line.size() >= 1 && line != "exit" && exit != true)
 		{
 			commandcheck(line);
 			commands.push_back(line);
 		}
+		else if (line == "exit")
+			exit = true;
 	}
+	if (exit != true)
+		throw errors::exitError();
 	return (commands);
 }
 
@@ -103,6 +108,7 @@ const std::vector<std::string>	reader::fileread(const char *file)
 	std::vector<std::string>	commands;
 	std::string 			line = "";
 	std::ifstream			content(file);
+	bool                            exit = false;
 	if (content.is_open())
 	{
 		if (fileCheck(std::string(file)) == 0)
@@ -113,13 +119,19 @@ const std::vector<std::string>	reader::fileread(const char *file)
 			{
 				getline(content, line);
 				line = trimmer(line);
-				if (line.size() >= 1)
+				if (line.size() >= 1 && line != "exit" && exit != true)
 				{
 					commandcheck(line);
 					commands.push_back(line);
 				}
+				else if (line == "exit")
+				{
+					exit = true;
+				}
 			}
 			content.close();
+			if (exit != true)
+				throw errors::exitError();
 		}
 	}
 	else

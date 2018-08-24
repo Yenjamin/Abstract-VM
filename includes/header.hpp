@@ -8,5 +8,6 @@
 # include <regex>
 # include <cmath>
 # include <cfloat>
+# include <math.h>
 
 #endif

@@ -45,6 +45,30 @@ class errors {
 			public:
 				const char *what() const throw();
 		};
+		class emptyStackError : public std::exception {
+			public:
+				const char *what() const throw();
+		};
+		class operationError : public std::exception {
+			public:
+				const char *what() const throw();
+		};
+		class zeroError : public std::exception {
+			public:
+				const char *what() const throw();
+		};
+		class typeError : public std::exception {
+			public:
+				const char *what() const throw();
+		};
+		class assertError : public std::exception {
+			public:
+				const char *what() const throw();
+		};
+		class exitError : public std::exception {
+			public:
+				const char *what() const throw();
+		};
 
 };
 

@@ -49,7 +49,7 @@ IOperand const * factory::createFloat(std::string const & value) const
 {
 	long double	nbr = static_cast<long double>(stold(value));
 
-	if (std::fabsl(nbr) < FLT_MIN && std::fabsl(nbr) > 0)
+	if (fabs(nbr) < FLT_MIN && std::fabs(nbr) > 0)
 		throw errors::initUnderflowError();
 	if (nbr > FLT_MAX)
 		throw errors::initOverflowError();
@@ -60,7 +60,7 @@ IOperand const * factory::createDouble(std::string const & value) const
 {
 	long double	nbr = static_cast<long double>(stold(value));
 
-	if (std::fabsl(nbr) < DBL_MIN && std::fabsl(nbr) > 0)
+	if (fabs(nbr) < DBL_MIN && std::fabs(nbr) > 0)
 		throw errors::initUnderflowError();
 	if (nbr > DBL_MAX)
 		throw errors::initOverflowError();
@@ -69,7 +69,7 @@ IOperand const * factory::createDouble(std::string const & value) const
 
 IOperand const * factory::createOperand(eOperandType type, std::string const & val) const
 {
-	functionpt	arr[] = {
+	functionpt	arr[] {
 		&factory::createInt8,
 		&factory::createInt16,
 		&factory::createInt32,
