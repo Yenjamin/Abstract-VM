@@ -40,7 +40,7 @@ void	run::runinstructions(std::string line)
 			throw errors::emptyStackError();
 		else
 			for (int i = _stack.size() - 1; i >= 0; i--)
-				std::cout << _stack[i]->toString() << std::endl;
+				std::cout << static_cast<long double>(stold(_stack[i]->toString())) << std::endl;
 	}
 	else if (line == "add")
 	{
@@ -177,29 +177,32 @@ void	run::runinstructions(std::string line)
 			op = line.substr(line.find(' ') + 1, (line.find('(') - line.find(' ') - 1));
 			val = line.substr(line.find('(') + 1, (line.size() - 2 - line.find('(')));
 			IOperand const * tmp = _stack[_stack.size() - 1];
+			long double	val1 = static_cast<long double>(stold(val));
+			long double val2 = static_cast<long double>(stold(tmp->toString()));
+
 			if (op == "int8" && tmp->getType() == 0)
 			{
-				if (val != tmp->toString())
+				if (val1 != val2)
 					throw errors::assertError();
 			}
 			else if (op == "int16" && tmp->getType() == 1)
 			{
-				if (val != tmp->toString())
+				if (val1 != val2)
 					throw errors::assertError();
 			}
 			else if (op == "int32" && tmp->getType() == 2)
 			{
-				if (val != tmp->toString())
+				if (val1 != val2)
 					throw errors::assertError();
 			}
 			else if (op == "float" && tmp->getType() == 3)
 			{
-				if (val != tmp->toString())
+				if (val1 != val2)
 					throw errors::assertError();
 			}
 			else if (op == "double" && tmp->getType() == 4)
 			{
-				if (val != tmp->toString())
+				if (val1 != val2)
 					throw errors::assertError();
 			}
 			else
@@ -216,8 +219,9 @@ void    run::runvm(void)
 
     top = _commands.begin();
     bottom = _commands.end();
-    while (top != bottom) {
-	    std::cout << *top << std::endl;
+	while (top != bottom)
+	{
+//	    std::cout << *top << std::endl;
 	    runinstructions(*top);
 	    top++;
     }

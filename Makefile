@@ -3,11 +3,10 @@ NAME = avm
 CC = g++ -Wall -Werror -Wextra
 
 FILES = main.cpp \
-	AbstractFactory.class.cpp \
-	Exception.class.cpp \
-	ExecuteVM.class.cpp \
-	Instructions.class.cpp \
-	StackVM.class.cpp
+	reader.class.cpp \
+	errors.class.cpp \
+	run.class.cpp \
+	factory.class.cpp
 
 SRC := $(addprefix srcs/, $(FILES))
 
